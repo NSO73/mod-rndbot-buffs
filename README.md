@@ -6,6 +6,9 @@ An AzerothCore module for
 [mod-playerbots](https://github.com/mod-playerbots/mod-playerbots) that lets
 idle random bots cast useful class buffs on nearby real player characters.
 
+> Fork of [Rockhopper1776/mod-rndbot-buffs](https://github.com/Rockhopper1776/mod-rndbot-buffs)
+> adding optional refresh of expiring buffs (`RndbotBuffs.RefreshBelowSec`).
+
 The module is intentionally conservative:
 
 - only rndbots managed by `RandomPlayerbotMgr` participate;
@@ -57,7 +60,10 @@ supported through AzerothCore's normal config reload path.
 
 ## Configuration
 
-The defaults check every five seconds, search 30 yards, and preserve 35% mana.
+The defaults check every five seconds, search 30 yards, preserve 35% mana, and
+only cast missing buffs (`RndbotBuffs.RefreshBelowSec = 0`). Set
+`RndbotBuffs.RefreshBelowSec` to a number of seconds to also let bots refresh
+an existing buff once less than that time remains.
 See [`conf/mod_rndbot_buffs.conf.dist`](conf/mod_rndbot_buffs.conf.dist) for all
 settings and comments.
 
